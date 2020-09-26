@@ -9,7 +9,7 @@ import { Dish } from '../interfaces/dish.interfaces';
 export class MenuComponent implements OnInit {
 
   name = 'Demo';
-  // selected: string  = '';
+  selected: string  = '';
 
   dishes: Dish[] = [
     {
@@ -45,9 +45,10 @@ export class MenuComponent implements OnInit {
     }
   ];
 
-  // select(name: string): string {
-  //   return this.selected = name
-  // }
+  select(name: string): string {
+    console.log('select:', name);
+    return this.selected = name
+  }
 
   constructor() { }
 

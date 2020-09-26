@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Dish } from '../interfaces/dish.interfaces';
 
 @Component({
@@ -17,7 +17,7 @@ export class DishComponent implements OnInit {
     this._totalIngredients = value.ingredients.length;
   }
 
-  // @Output() choose: EventEmitter<string> = new EventEmitter<string>();
+  @Output() choose: EventEmitter<string> = new EventEmitter<string>();
 
   get name(): string {
     return this._name;
@@ -27,10 +27,10 @@ export class DishComponent implements OnInit {
     return this._totalIngredients;
   }
 
-  // notify(name: string): void {
-  //   console.log(name);
-  //   this.choose.emit(name);
-  // }
+  notify(name: string): void {
+    console.log(name);
+    this.choose.emit(name);
+  }
 
   generateName(name: string): string {
     return `El nombre es: ${name}`;
