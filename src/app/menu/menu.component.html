@@ -2,10 +2,25 @@
 
 <h2>hola {{ name }} </h2>
 
-<h2>El platillo seleccionado es: {{ selected }}</h2>
+<h2 *ngIf="selected.length">El platillo seleccionado es: {{ selected }}</h2>
 
 <ul>
   <li *ngFor="let dish of dishes" class="dishes">
     <app-dish [dish]="dish" (choose)="select($event)"></app-dish>
   </li>
 </ul>
+
+<!-- <table width="100%" border="1">
+  <thead>
+    <tr>
+      <th>Plato</th>
+      <th>Cantidad de Ingredientes</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dish of dishes" class="dishes">
+      <app-dish [dish]="dish" (choose)="select($event)"></app-dish>
+    </tr>
+  </tbody>
+</table> -->

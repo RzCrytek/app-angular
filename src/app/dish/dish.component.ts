@@ -8,6 +8,7 @@ import { Dish } from '../interfaces/dish.interfaces';
 })
 export class DishComponent implements OnInit {
 
+  private _currentDish: {};
   private _name: string;
   private _totalIngredients: number;
 
@@ -15,9 +16,10 @@ export class DishComponent implements OnInit {
   @Input() set dish( value: Dish ) {
     this._name = this.generateName( value.name );
     this._totalIngredients = value.ingredients.length;
+    this._currentDish = value;
   }
 
-  @Output() choose: EventEmitter<string> = new EventEmitter<string>();
+  @Output() choose: EventEmitter<Object> = new EventEmitter<Object>();
 
   get name(): string {
     return this._name;
@@ -27,9 +29,13 @@ export class DishComponent implements OnInit {
     return this._totalIngredients;
   }
 
-  notify(name: string): void {
-    console.log(name);
-    this.choose.emit(name);
+  get currentDish(): {} {
+    return this._currentDish;
+  }
+
+  notify(currentDish: {}): void {
+    console.log(currentDish);
+    this.choose.emit(currentDish);
   }
 
   generateName(name: string): string {

@@ -24,7 +24,9 @@ export class MenuComponent implements OnInit {
       ingredients: [
         { name: 'arroz', qty: 2 },
         { name: 'pollo', qty: 1 },
-        { name: 'papa', qty: 5 }
+        { name: 'papa', qty: 5 },
+        { name: 'tomate', qty: 3 },
+        { name: 'ceboola', qty: 2 }
       ]
     },
     {
@@ -32,7 +34,8 @@ export class MenuComponent implements OnInit {
       ingredients: [
         { name: 'limón', qty: 8 },
         { name: 'pescado', qty: 2 },
-        { name: 'camote', qty: 2 }
+        { name: 'camote', qty: 2 },
+        { name: 'lechuga', qty: 1 },
       ]
     },
     {
@@ -45,9 +48,15 @@ export class MenuComponent implements OnInit {
     }
   ];
 
-  select(name: string): string {
-    console.log('select:', name);
-    return this.selected = name
+  select(currentDish: Dish): string {
+    console.log('select:', currentDish);
+
+    let currentIngredients: Number = currentDish.ingredients.length;
+    
+    console.log('ingredients:', currentIngredients);
+
+    return this.selected = `${currentDish.name} y tiene ${currentIngredients} ingredientes`;
+
   }
 
   constructor() { }
