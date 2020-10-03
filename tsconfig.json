@@ -16,6 +16,10 @@
       "es2018",
       "dom"
     ],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      // las interfaces al final son los modelos de datos
+      "@app/models": ["src/app/interfaces"]
+    }
   }
 }

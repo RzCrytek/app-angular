@@ -1,28 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import * as countries from '../../assets/countries.json';
-import { Country } from '../interfaces/country.interfaces';
+import * as countriesJson from '../../assets/countries.json';
+// import { Country } from '../interfaces/country.interfaces';
+import { Country } from '@app/models';
+import { UpperCasePipe, PercentPipe } from '@angular/common';
 
 @Component({
   selector: 'app-countries',
   templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.scss']
+  styleUrls: ['./countries.component.scss'],
+  providers: [UpperCasePipe, PercentPipe]
 })
 export class CountriesComponent implements OnInit {
   selected: Country;
+  countries: Country[];
   nameCountry: string = 'Peru';
+  birthday = new Date();
+  total = 123456;
 
-  constructor() {
+  constructor(private upperCasePipe: UpperCasePipe, private percentPipe: PercentPipe) {
 
-    // if( countries.some((n) => n.name == this.nameCountry) ) {
-    //   console.log(n.name)
+    // if( countriesJson.some((n) => n.name == this.nameCountry) ) {
+    //   console.log(this.nameCountry)
     // }
 
-    this.selected = countries[10];
+    this.selected = countriesJson[10];
     console.log(this.selected);
 
   }
 
   ngOnInit(): void {
+  }
+
+  send(name: string): void {
+    console.log('antes: ', name);
+    console.log('antes: ', name.toUpperCase());
+    name = this.upperCasePipe.transform(name);
+    console.log('Después: ', name);
+  }
+
+  porcent(total: number): void {
+    console.log(total);
+    console.log(this.percentPipe.transform(total));
   }
 
 }
