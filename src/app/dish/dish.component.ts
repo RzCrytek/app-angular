@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Dish } from '../interfaces/dish.interfaces';
+import { Dish } from '@app/models';
 
 @Component({
   selector: 'app-dish',
@@ -14,12 +14,13 @@ export class DishComponent implements OnInit {
 
 
   @Input() set dish( value: Dish ) {
+    // console.log('value: ', value);
     this._name = this.generateName( value.name );
     this._totalIngredients = value.ingredients.length;
     this._currentDish = value;
   }
 
-  @Output() choose: EventEmitter<Object> = new EventEmitter<Object>();
+  @Output() choose: EventEmitter<object> = new EventEmitter<object>();
 
   get name(): string {
     return this._name;

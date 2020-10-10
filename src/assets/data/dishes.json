@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Ceviche",
-    "ingredient": [
+    "ingredients": [
       { "name": "sal", "quantity": "3 cdta." },
       { "name": "limon", "quantity": "5 un." },
       {
@@ -19,7 +19,7 @@
   {
     "id": 2,
     "name": "Arroz con Pollo",
-    "ingredient": [
+    "ingredients": [
       { "name": "pollo", "quantity": "1un." },
       { "name": "cebolla", "quantity": "5 un." },
       {
@@ -36,7 +36,7 @@
   {
     "id": 3,
     "name": "Tacu Tacu",
-    "ingredient": [
+    "ingredients": [
       { "name": "papa", "quantity": "1kg." },
       { "name": "cebolla", "quantity": "7 un." },
       {
@@ -53,7 +53,7 @@
   {
     "id": 4,
     "name": "Arroz Chaufa",
-    "ingredient": [
+    "ingredients": [
       { "name": "arroz", "quantity": "1kg." },
       { "name": "pollo", "quantity": "1 un." }
     ],

@@ -2,7 +2,7 @@
 
 <h2>hola {{ name }} </h2>
 
-<h2 *ngIf="selected.length">El platillo seleccionado es: {{ selected }}</h2>
+<h2 *ngIf="selected.length">{{ selected | selectedish }}</h2>
 
 <ul>
   <li *ngFor="let dish of dishes" class="dishes">

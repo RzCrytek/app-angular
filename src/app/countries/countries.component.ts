@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as countriesJson from '../../assets/countries.json';
+import * as countriesJson from '@app/data/countries.json';
 // import { Country } from '../interfaces/country.interfaces';
 import { Country } from '@app/models';
 import { UpperCasePipe, PercentPipe } from '@angular/common';
@@ -13,9 +13,9 @@ import { UpperCasePipe, PercentPipe } from '@angular/common';
 export class CountriesComponent implements OnInit {
   selected: Country;
   countries: Country[];
-  nameCountry: string = 'Peru';
   birthday = new Date();
   total = 123456;
+  count = '';
 
   constructor(private upperCasePipe: UpperCasePipe, private percentPipe: PercentPipe) {
 
@@ -33,7 +33,7 @@ export class CountriesComponent implements OnInit {
 
   send(name: string): void {
     console.log('antes: ', name);
-    console.log('antes: ', name.toUpperCase());
+    // console.log('antes: ', name.toUpperCase());
     name = this.upperCasePipe.transform(name);
     console.log('Después: ', name);
   }

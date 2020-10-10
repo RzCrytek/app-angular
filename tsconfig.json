@@ -19,7 +19,9 @@
     "resolveJsonModule": true,
     "paths": {
       // las interfaces al final son los modelos de datos
-      "@app/models": ["src/app/interfaces"]
+      "@app/data/*": ["src/assets/data/*"],
+      "@app/models": ["src/app/interfaces"],
+      "@app/pipes": ["src/app/pipes"]
     }
   }
 }

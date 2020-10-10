@@ -8,13 +8,18 @@ import { OrderComponent } from './order/order.component';
 import { DishComponent } from './dish/dish.component';
 import { CountriesComponent } from './countries/countries.component';
 
+import { EmptyPipe, FilesizePipe, SelectedishPipe } from '@app/pipes';
+
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     OrderComponent,
     DishComponent,
-    CountriesComponent
+    CountriesComponent,
+    FilesizePipe,
+    EmptyPipe,
+    SelectedishPipe
   ],
   imports: [
     BrowserModule,

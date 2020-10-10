@@ -1,5 +1,10 @@
+<!-- {{ total | filesize: "gb": "hola":123:true:selected }} -->
+{{ count | empty }}
+<br>
+{{ total | filesize: "gb" }}
+<br>
 <button (click)="send(selected.currencies[0].name)">Enviar</button>
-<button (click)="porcent(total)">Porcentaje</button>
+<button (click)="porcent(0.25)">Porcentaje</button>
 <hr>
 {{ total | percent }}
 <br>
