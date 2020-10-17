@@ -12,11 +12,13 @@ export class MenuComponent implements OnInit {
   name = 'Demo';
   selected = '';
 
-  dishes: Dish;
+  dishes: Dish[];
 
   constructor() {
-    this.dishes = dishesJson.default;
-    console.log(this.dishes);
+    this.dishes = dishesJson.dishes;
+    // console.log(this.dishes);
+    console.log('json:', dishesJson);
+    console.log('json2:', dishesJson.dishes);
   }
 
   ngOnInit(): void {}
@@ -30,6 +32,14 @@ export class MenuComponent implements OnInit {
 
     return this.selected = `${currentDish.name} y tiene ${currentIngredients} ingredientes`;
 
+  }
+
+  show(value: boolean): string {
+    return value ? 'block' : 'none';
+  }
+
+  validateStock(value: boolean): string {
+    return value ? 'stock' : 'noStock';
   }
 
 }

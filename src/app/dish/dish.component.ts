@@ -12,12 +12,16 @@ export class DishComponent implements OnInit {
   private _name: string;
   private _totalIngredients: number;
 
+  private _spicy: number;
+
 
   @Input() set dish( value: Dish ) {
     // console.log('value: ', value);
     this._name = this.generateName( value.name );
     this._totalIngredients = value.ingredients.length;
     this._currentDish = value;
+
+    this._spicy = value.spicy;
   }
 
   @Output() choose: EventEmitter<object> = new EventEmitter<object>();
@@ -41,6 +45,14 @@ export class DishComponent implements OnInit {
 
   generateName(name: string): string {
     return `El nombre es: ${name}`;
+  }
+
+  get spicy(): number {
+    return this._spicy;
+  }
+
+  spicyClass(): string {
+    return this._spicy > 2 ? 'pica' : 'noPica';
   }
 
   constructor() { }

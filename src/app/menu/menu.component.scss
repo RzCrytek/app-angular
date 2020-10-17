@@ -12,3 +12,21 @@ ul {
     margin: 10px;
   }
 }
+
+.stock {
+  background-color: lightblue;
+}
+
+.noStock {
+  background-color: lightgray;
+}
+
+.stock {
+  border-width: 2px;
+  border-color: red;
+}
+
+.no-stock {
+  border-width: 2px;
+  border-color: blue;
+}

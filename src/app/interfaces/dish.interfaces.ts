@@ -1,6 +1,12 @@
 // import { Ingredient } from './ingredient.interfaces'
+
+export interface Ingredient {
+  name: string;
+  qty: string;
+}
+
 export interface Dish {
-  id?: number;
+  id: number;
   name: string;
   ingredients: Ingredient[];
   rating: number;
@@ -8,9 +14,6 @@ export interface Dish {
   price: number;
   inventoryStatus: string;
   image: string;
-}
-
-export interface Ingredient {
-  name: string;
-  quantity: number;
+  stock: boolean;
+  spicy: number;
 }

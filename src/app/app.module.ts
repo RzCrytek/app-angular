@@ -9,6 +9,7 @@ import { DishComponent } from './dish/dish.component';
 import { CountriesComponent } from './countries/countries.component';
 
 import { EmptyPipe, FilesizePipe, SelectedishPipe } from '@app/pipes';
+import { BoxShadowDirective } from './directives/box-shadow.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EmptyPipe, FilesizePipe, SelectedishPipe } from '@app/pipes';
     CountriesComponent,
     FilesizePipe,
     EmptyPipe,
-    SelectedishPipe
+    SelectedishPipe,
+    BoxShadowDirective
   ],
   imports: [
     BrowserModule,

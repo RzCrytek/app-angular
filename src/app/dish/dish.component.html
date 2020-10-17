@@ -1,11 +1,22 @@
 <div>
-  <picture>
-    <img src="" alt="">
-  </picture>
-
   <h3>{{ name }}</h3>
   <p>Total Ingredientes: {{ totalIngredients }}</p>
+
   <p>
     <button (click)="notify(currentDish)">seleccionar</button>
   </p>
+
+  <div [ngSwitch]=spicy>
+    <p *ngSwitchCase=0 [ngClass]="spicyClass()">No pica</p>
+
+    <p *ngSwitchCase=1 [ngClass]="spicyClass()">Pica poco</p>
+
+    <p *ngSwitchCase=2 [ngClass]="spicyClass()">Pica</p>
+
+    <p *ngSwitchCase=3 [ngClass]="spicyClass()">Pica mucho</p>
+
+    <p *ngSwitchCase=4 [ngClass]="spicyClass()">Muy picante</p>
+
+    <p *ngSwitchDefault [ngClass]="spicyClass()">No hay registro de picor</p>
+  </div>
 </div>
