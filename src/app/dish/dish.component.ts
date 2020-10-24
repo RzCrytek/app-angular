@@ -39,7 +39,7 @@ export class DishComponent implements OnInit {
   }
 
   notify(currentDish: {}): void {
-    console.log(currentDish);
+    // console.log(currentDish);
     this.choose.emit(currentDish);
   }
 

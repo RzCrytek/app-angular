@@ -10,6 +10,10 @@ import { CountriesComponent } from './countries/countries.component';
 
 import { EmptyPipe, FilesizePipe, SelectedishPipe } from '@app/pipes';
 import { BoxShadowDirective } from './directives/box-shadow.directive';
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+import { DetailComponent } from './countries/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +25,14 @@ import { BoxShadowDirective } from './directives/box-shadow.directive';
     FilesizePipe,
     EmptyPipe,
     SelectedishPipe,
-    BoxShadowDirective
+    BoxShadowDirective,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Dish } from '@app/models';
+import { Customer, Dish } from '@app/models';
 import * as dishesJson from '@app/data/dishes.json';
+import { MenuService } from '../utils/menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,15 +11,17 @@ import * as dishesJson from '@app/data/dishes.json';
 export class MenuComponent implements OnInit {
 
   name = 'Demo';
-  selected = '';
 
+  selected = '';
   dishes: Dish[];
 
-  constructor() {
+  orders: Dish[] = [];
+
+  constructor(public menuService: MenuService) {
     this.dishes = dishesJson.dishes;
     // console.log(this.dishes);
-    console.log('json:', dishesJson);
-    console.log('json2:', dishesJson.dishes);
+    // console.log('json:', dishesJson);
+    // console.log('json2:', dishesJson.dishes);
   }
 
   ngOnInit(): void {}
@@ -28,7 +31,10 @@ export class MenuComponent implements OnInit {
 
     const currentIngredients: number = currentDish.ingredients.length;
 
-    console.log('ingredients:', currentIngredients);
+    // console.log('ingredients:', currentIngredients);
+
+    this.orders.push(currentDish);
+    this.menuService.check(this.orders);
 
     return this.selected = `${currentDish.name} y tiene ${currentIngredients} ingredientes`;
 
@@ -40,6 +46,15 @@ export class MenuComponent implements OnInit {
 
   validateStock(value: boolean): string {
     return value ? 'stock' : 'noStock';
+  }
+
+  send(name: string): void {
+    const customer: Customer = {
+      name,
+      level: 'regular'
+    }
+
+    this.menuService.customer = customer;
   }
 
 }

@@ -16,8 +16,8 @@ export class BoxShadowDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.appBoxShadow);
-    console.log(this.element.nativeElement);
+    // console.log(this.appBoxShadow);
+    // console.log(this.element.nativeElement);
 
     this.setBorder(this.appBoxShadow);
     this.setShadow(this.appBoxShadowX, this.appBoxShadowY, this.appBoxShadowBlur);

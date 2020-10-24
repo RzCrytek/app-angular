@@ -19,3 +19,20 @@
 <br>
 <br>
 <code>{{ selected | json }}</code>
+
+<hr>
+<hr>
+
+<input type="text" [(ngModel)]="code" value="code">
+<button (click)="getInfo(code)">Obtener</button>
+<hr>
+<div *ngIf="( countriesService.selectedCountry$ | async ) as country">
+    <p>{{ country.name }}</p>
+</div>
+
+<div *ngIf="( countriesService.error$ | async ) as error">
+  <p>{{ error }}</p>
+</div>
+<hr>
+
+<app-detail></app-detail>

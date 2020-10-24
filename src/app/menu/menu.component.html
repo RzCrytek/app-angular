@@ -2,6 +2,13 @@
 
 <h2>hola {{ name }} </h2>
 
+<p *ngIf="menuService.customer">lo que se envía: {{ menuService.customer.name }}</p>
+<input type="text" name="name" [(ngModel)]="name">
+<p>value del input: {{ name }}</p>
+<p>total: {{ menuService.total }}</p>
+
+<button (click)="send(name)">ENVIAR PEDIDO</button>
+
 <h2 *ngIf="selected.length">{{ selected | selectedish }}</h2>
 
 <ul>
