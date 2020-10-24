@@ -28,20 +28,25 @@ export class CountriesService implements OnDestroy {
       .pipe(
         takeUntil(this.destroyAll$)
       )
-      .subscribe( countrie => {
-        console.log(countrie);
+      .subscribe( (country: Country) => {
+        console.log('country:', country);
+        this.error$.next(null);
+        this.selectedCountry$.next(country);
 
 
-        if (countries[code]) {
-          this.error$.next(null);
-          this.selectedCountry$.next(countries[code]);
-          // dataService.unsubscribe();
-        } else {
-          this.selectedCountry$.next(null);
-          this.error$.next('No se encontró el código del país');
-        }
+        // if (countries[code]) {
+        //   this.error$.next(null);
+        //   this.selectedCountry$.next(countries[code]);
+        //   // dataService.unsubscribe();
+        // } else {
+        //   this.selectedCountry$.next(null);
+        //   this.error$.next('No se encontró el código del país');
+        // }
       },
       err => {
+        console.log('error');
+        this.selectedCountry$.next(null);
+        this.error$.next('No se encontró el código del país');
         dataService.unsubscribe();
       },
       () => {
