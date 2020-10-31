@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { Country } from '../interfaces/country.interfaces';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, of, Subject, throwError } from 'rxjs';
+import { Country, Post } from '../interfaces/country.interfaces';
+import { delay, flatMap, mergeMap, retry, retryWhen, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,35 @@ export class CountriesService implements OnDestroy {
   selectedCountry$: Subject<Country> = new Subject<Country>();
   error$: Subject<string> = new Subject<string>();
 
-  private url = 'https://restcountries.eu/rest/v2/all';
+  private url = 'https://restcountries.eu/rest/v2/allaa';
   private urlCode = 'https://restcountries.eu/rest/v2';
+
+  private urlJsonApi = 'https://jsonplaceholder.typicode.com';
+
   private destroyAll$: Subject<void> = new Subject<void>();
 
   constructor( private http: HttpClient) { }
 
   getList(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.url);
+    // return this.http.get<Country[]>(this.url).pipe( retry(3) );
+    return this.http.get<Country[]>(this.url)
+      .pipe( retryWhen( err => {
+        let retries = 3;
+        return err
+          .pipe(
+            delay(1500),
+            mergeMap( error => {
+              if (retries-- > 0) {
+                console.log('val:', retries);
+                return of(error);
+              } else {
+                console.log('GG');
+                return throwError(error);
+
+              }
+            })
+          );
+      }));
   }
 
   getCountry(code: string): void {
@@ -53,6 +74,29 @@ export class CountriesService implements OnDestroy {
         console.log('complete');
         dataService.unsubscribe();
       });
+  }
+
+  addPost(post: Post): Observable<Post> {
+    console.log('post---', post);
+    const url = `${this.urlJsonApi}/posts`;
+
+    console.log(url);
+    return this.http.post<Post>(url, post);
+  }
+
+  addUpdatePost(post: Post): Observable<Post> {
+    console.log('post---', post);
+    const url = `${this.urlJsonApi}/posts/1`;
+
+    console.log(url);
+    return this.http.put<Post>(url, post);
+  }
+
+  addDeletePost(id: number): Observable<object> {
+    const url = `${this.urlJsonApi}/posts/${id}`;
+
+    console.log(url);
+    return this.http.delete<object>(url);
   }
 
   ngOnDestroy(): void{

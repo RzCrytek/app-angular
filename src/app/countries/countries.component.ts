@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as countriesJson from '@app/data/countries.json';
 // import { Country } from '../interfaces/country.interfaces';
-import { Country } from '@app/models';
+import { Country, Post } from '@app/models';
 import { UpperCasePipe, PercentPipe } from '@angular/common';
 import { CountriesService } from '../services/countries.service';
 import { Subject } from 'rxjs';
@@ -22,6 +22,10 @@ export class CountriesComponent implements OnInit, OnDestroy {
   count = '';
 
   code: string;
+
+  postResult = '';
+  postDeleteResult = '';
+  postUpdateResult = '';
 
   constructor(private upperCasePipe: UpperCasePipe, private percentPipe: PercentPipe, public countriesService: CountriesService) {
 
@@ -69,6 +73,52 @@ export class CountriesComponent implements OnInit, OnDestroy {
 
   getInfo(code: string): void {
     this.countriesService.getCountry(code);
+  }
+
+  addPost(): void {
+    this.postResult = '';
+
+    const post: Post = {
+      userId: 1,
+      title: 'demo title',
+      body: 'demo body'
+    };
+
+    console.log('post:', post);
+
+    this.countriesService.addPost(post)
+      .subscribe( data => {
+        this.postResult = `se agregó el usuario con el id: ${data.id}`;
+        }
+      );
+  }
+
+  addUpdatePost(): void {
+    this.postUpdateResult = '';
+
+    const post: Post = {
+      userId: 1,
+      title: 'demo title 2',
+      body: 'demo body 2'
+    };
+
+    this.countriesService.addUpdatePost(post)
+      .subscribe( data => {
+        this.postUpdateResult = `se actualizó el usuario con el id: ${data.id}`;
+        }
+      );
+  }
+
+  addDeletePost(): void {
+    this.postDeleteResult = '';
+
+    const id = 1;
+
+    this.countriesService.addDeletePost(id)
+      .subscribe( data => {
+        this.postDeleteResult = `se eliminó el usuario con el id: ${id}`;
+        }
+      );
   }
 
   ngOnDestroy(): void{

@@ -35,4 +35,23 @@
 </div>
 <hr>
 
+
+<button (click)="addPost()">POST</button>
+<hr>
+<div *ngIf="postResult.length > 0">
+  {{ postResult }}
+</div>
+
+<button (click)="addUpdatePost()">UPDATE</button>
+<hr>
+<div *ngIf="postUpdateResult.length > 0">
+  {{ postUpdateResult }}
+</div>
+
+<button (click)="addDeletePost()">DELETE</button>
+<hr>
+<div *ngIf="postDeleteResult.length > 0">
+  {{ postDeleteResult }}
+</div>
+
 <app-detail></app-detail>
