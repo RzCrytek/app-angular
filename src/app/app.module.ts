@@ -10,10 +10,13 @@ import { CountriesComponent } from './countries/countries.component';
 
 import { EmptyPipe, FilesizePipe, SelectedishPipe } from '@app/pipes';
 import { BoxShadowDirective } from './directives/box-shadow.directive';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './countries/detail/detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MaterialAllModule } from './material-all.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,10 @@ import { DetailComponent } from './countries/detail/detail.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MaterialAllModule
   ],
   providers: [],
   bootstrap: [AppComponent]
